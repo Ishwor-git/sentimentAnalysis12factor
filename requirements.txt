@@ -1,0 +1,13 @@
+loguru
+mkdocs
+pip
+pytest
+python-dotenv
+ruff
+tqdm
+typer
+transformers
+torch
+fastapi
+uvicorn
+-e .
