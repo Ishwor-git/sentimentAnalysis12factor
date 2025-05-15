@@ -1,61 +1,76 @@
-# sentimentAnalysis12factor
+# 🧠 Sentiment Analysis API
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
+This project is a **12-factor compliant** sentiment analysis web API built using **FastAPI** and a **pretrained Hugging Face transformer model**. It allows users to predict whether a given piece of text expresses a **positive** or **negative** sentiment.
 
-a simple sentiment analysis application that follows 12 factor principles
+---
 
-## Project Organization
+## 🚀 Features
 
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         sentimentanalysis12factor and configuration for tools like black
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
-└── sentimentanalysis12factor   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes sentimentanalysis12factor a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
+- REST API endpoint (`/predict`) to classify sentiment
+- Supports local execution
+- Structured using the 12-factor app methodology
+- Logging with Loguru
+
+---
+
+## 🧰 Technologies Used
+
+- FastAPI
+- Transformers (`pipeline("sentiment-analysis")`)
+- Loguru for logging
+- Pytest for testing
+- Pydantic for settings and validation
+
+---
+
+## ⚙️ Setup & Configuration
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/sentimentanalysis12factor.git
+cd sentimentanalysis12factor
 ```
 
---------
+### 2. Create a virtual environment and install dependencies
+```env
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
 
+### 3. Configuration
+create a .env file with following setting or Or configure using config.py via Pydantic settings.
+```bash
+ENVIRONMENT=local
+LOG_LEVEL=DEBUG
+```
+
+## 🧪 Run Locally
+```bash
+uvicorn src.sentimentAnalysis.api:app --reload
+```
+Visit the API docs at: http://localhost:8000/docs
+
+## ✅ Run Tests
+```bash
+PYTHONPATH=./src pytest
+```
+
+## 🧪 Example API Request
+**Request  :**
+```json
+{
+  "text": "I love using this API!"
+}
+```
+**Request  :**
+```json
+{
+  "label": "POSITIVE",
+  "score": 0.9992
+}
+```
+
+## 🧑‍💻 Author
+Developed by :  Ishwor Raj Pokharel
